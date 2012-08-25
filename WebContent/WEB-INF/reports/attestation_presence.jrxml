@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="attestation_presence" language="groovy" pageWidth="708" pageHeight="425" columnWidth="668" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="CNE" class="java.lang.String"/>
+	<parameter name="anneeScolaire" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT nom, prenom, cin, nomFiliere FROM Etudiants e, Filieres f where e.idFiliere=f.idFiliere and cne=$P{CNE}]]>
+	</queryString>
+	<field name="nom" class="java.lang.String"/>
+	<field name="prenom" class="java.lang.String"/>
+	<field name="cin" class="java.lang.String"/>
+	<field name="nomFiliere" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="121" splitType="Stretch">
+			<image>
+				<reportElement x="13" y="0" width="174" height="118"/>
+				<imageExpression class="java.lang.String"><![CDATA["/home/m-reda/Bureau/logo_FSSM.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="229" y="63" width="326" height="31"/>
+				<textElement>
+					<font fontName="FreeMono" size="24" isBold="true" isUnderline="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Attestation de présence]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="9" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="8" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="194" splitType="Stretch">
+			<staticText>
+				<reportElement x="23" y="11" width="399" height="20"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Le doyen de la Faculté des Sciences Semallia certifie que]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="40" width="181" height="20"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monsieur, (Mme ou Mlle)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="68" width="38" height="20"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CIN : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="98" width="279" height="20"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[A participé aux contrôles de la filière : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="130" width="186" height="20"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[De l'année universitaire :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="343" y="165" width="76" height="14"/>
+				<textElement/>
+				<text><![CDATA[Marrakech le : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="210" y="40" width="70" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="62" y="68" width="100" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="303" y="98" width="100" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nomFiliere}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="210" y="130" width="326" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{anneeScolaire}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="419" y="165" width="206" height="14"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="40" width="100" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{prenom}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="7" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="13" y="0" width="523" height="20"/>
+				<textElement/>
+				<text><![CDATA[Cette attestation est délivrée à l'interessé(e) sur sa demande pour servir et faire valoir ce qui est de droit]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

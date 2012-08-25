@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="attestation_inscription" language="groovy" pageWidth="708" pageHeight="425" columnWidth="668" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="CNE" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT nom, prenom, cne, cin, date, lieu, num, nomFiliere FROM Etudiants e, Filieres f where e.idFiliere=f.idFiliere and cne=$P{CNE}]]>
+	</queryString>
+	<field name="nom" class="java.lang.String"/>
+	<field name="prenom" class="java.lang.String"/>
+	<field name="cne" class="java.lang.String"/>
+	<field name="cin" class="java.lang.String"/>
+	<field name="date" class="java.lang.String"/>
+	<field name="lieu" class="java.lang.String"/>
+	<field name="num" class="java.lang.String"/>
+	<field name="nomFiliere" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="119" splitType="Stretch">
+			<image>
+				<reportElement x="14" y="1" width="174" height="118"/>
+				<imageExpression class="java.lang.String"><![CDATA["/home/m-reda/Bureau/logo_FSSM.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="233" y="55" width="357" height="34"/>
+				<textElement>
+					<font fontName="FreeMono" size="24" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Attestation d'inscription]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="7" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="5" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="197" splitType="Stretch">
+			<staticText>
+				<reportElement x="25" y="13" width="465" height="20"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Le doyen de la faculté des sciences Semlalia attteste que]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="49" width="115" height="15"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[L'étudiant(e) : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="164" y="49" width="101" height="15"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nom}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="28" y="77" width="47" height="15"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CNE :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="77" width="37" height="20"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CIN : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="287" y="77" width="100" height="16"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="75" y="77" width="100" height="16"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cne}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="30" y="105" width="55" height="16"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Né le : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="105" width="37" height="16"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[à :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="130" width="200" height="20"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Est inscrit sous le numéro : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="376" y="130" width="114" height="20"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[dans la filière : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="232" y="130" width="100" height="20"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{num}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="490" y="130" width="100" height="20"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nomFiliere}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="85" y="105" width="100" height="16"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="287" y="105" width="100" height="16"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{lieu}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="265" y="49" width="100" height="15"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{prenom}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="417" y="177" width="73" height="20"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Marrakech le : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="490" y="177" width="163" height="20"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="6" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="28" y="0" width="458" height="20"/>
+				<textElement/>
+				<text><![CDATA[Cette attestation est délivrée à l'interessé(e) pour pouvoir faire valoir ce qui est de droit]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
